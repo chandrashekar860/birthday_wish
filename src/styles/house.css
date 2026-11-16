@@ -1,0 +1,56 @@
+.scene-house { width: min(100%, 1086px); margin-inline: auto; }
+.house-header { display: flex; justify-content: space-between; align-items: end; gap: 12px; margin: 9px 0 15px; }
+.house-header h1 { font-size: clamp(2.3rem, 5.3vw, 4.3rem); }
+.house-header em { color: #a34d3c; }
+.progress { padding: 8px 11px; min-width: 150px; background: #fff6df; border: 1px dashed #b5a47e; border-radius: 11px; text-align: center; font: 500 11px var(--label); color: #514c3a; }
+.progress strong { color: #345743; letter-spacing: .03em; }
+.progress-icons { display: flex; justify-content: center; gap: 5px; margin-bottom: 4px; }
+.progress-icons span { border: 1px solid var(--stamp-border); border-radius: 6px; background: var(--stamp-bg); color: var(--stamp-ink); width: 24px; height: 24px; display: grid; place-items: center; }
+.progress-icons span.discovered { background: #537a60; color: white; border-color: #537a60; animation: guide-pop .4s both; }
+.house-card { overflow: hidden; border: 1px solid #946d52; border-radius: 22px; background: #f6dfaa; box-shadow: 0 4px 0 #bb976f, 0 11px 39px #63432e21; }
+.room-layout { width: 100%; aspect-ratio: var(--room-ratio); position: relative; isolation: isolate; }
+.room-tall { display: none; }
+.room-art { position: absolute; inset: 0; width: 100%; height: 100%; }
+.room-banner-text { font-family: var(--serif); font-size: 21px; font-weight: 800; letter-spacing: -.02em; }
+.balloon-bob { animation: balloon 5s ease-in-out infinite alternate; }
+@keyframes balloon { to { transform: translate(3px, -5px); } }
+.room-object { position: absolute; left: var(--left); top: var(--top); translate: -50% -62%; width: var(--width); min-width: 56px; min-height: 50px; border: 0; border-radius: 18px; background: transparent; display: flex; flex-direction: column; align-items: center; justify-content: center; padding: 0; isolation: isolate; }
+.room-object:focus-visible { z-index: 2; }
+.object-picture { display: block; width: 100%; pointer-events: none; animation: object-idle 4s var(--wait) ease-in-out infinite; }
+.object-picture svg { display: block; width: 100%; transition: filter .2s, transform .22s; }
+@keyframes object-idle { 0%, 84%, 100% { transform: translateY(0) rotate(0); } 89% { transform: translateY(-3px) rotate(-2deg); } 95% { transform: translateY(-2px) rotate(2deg); } }
+.room-object:hover .object-picture svg, .room-object:focus-visible .object-picture svg { transform: scale(1.05) rotate(-2deg); filter: drop-shadow(0px 0px 5px #fff8bf); }
+.object-label { display: inline-flex; pointer-events: none; position: relative; align-items: center; justify-content: center; gap: 4px; min-height: 21px; margin-top: -2px; padding: 2px 7px; background: var(--stamp-bg); border: 1px solid var(--stamp-border); color: var(--stamp-ink); border-radius: 13px; box-shadow: 0 2px 0 #825d4540; font: 700 clamp(10px, 1.13vw, 12px)/1 var(--label); white-space: nowrap; }
+.object-dot { display: block; background: var(--stamp-ink); opacity: .75; width: 5px; height: 5px; border-radius: 50%; }
+.object-locked .object-picture { filter: saturate(.77); }
+.object-locked .object-label { background: #f2e0c2; border-color: #ac9073; color: #655246; }
+.object-glowing .object-picture { filter: drop-shadow(0 0 10px #ffef95) drop-shadow(0 0 3px #fffae8); animation: letter-glow 2.9s ease-in-out infinite alternate; }
+@keyframes letter-glow { to { filter: drop-shadow(0 0 18px #fff08a) drop-shadow(0 0 6px #fffadf); transform: translateY(-4px); } }
+.house-footer { display: flex; align-items: center; justify-content: space-between; gap: 8px; min-height: 71px; padding: 3px 18px 3px 10px; background: #fff1d2; border-top: 1px solid #ae8f70; }
+.house-footer .speech { max-width: 49ch; }
+.house-footer p { display: inline-flex; align-items: center; gap: 6px; font: 700 11px var(--label); color: #675d43; }
+.house-footer p svg { color: #9c6b32; }
+.house-unlocked .house-footer { background: #ffedc7; }
+.house-unlocked .house-footer p { font-weight: 700; color: #894b38; }
+@media (max-width: 700px) {
+  .scene-house { width: min(100%, 560px); }
+  .house-header { align-items: center; margin: 3px 0 11px; }
+  .house-header .kicker { font-size: 8px; line-height: 1.1; gap: 5px; }
+  .house-header h1 { font-size: clamp(1.85rem, 6.4vw, 3.25rem); margin-top: 3px; text-wrap: initial; }
+  .house-header em { white-space: nowrap; }
+  .progress { min-width: 0; flex: 0 0 auto; font-size: 8.5px; padding: 5px; border-radius: 8px; }
+  .progress-icons { gap: 3px; margin-bottom: 3px; }
+  .progress-icons span { width: 18px; height: 18px; border-radius: 4px; }
+  .progress-icons svg { width: 12px; height: 12px; }
+  .house-card { border-radius: 15px; }
+  .room-wide { display: none; }
+  .room-tall { display: block; }
+  .object-label { font-size: clamp(9px, 2.55vw, 12px); }
+  .object-label svg { width: 10px; height: 10px; }
+  .house-footer { padding: 3px 6px; min-height: 59px; }
+  .house-footer .guide { flex: 1 1 auto; gap: 5px; }
+  .house-footer .guide-picture { width: 43px; height: 44px; }
+  .house-footer .speech { max-width: 29ch; font-size: .69rem; }
+  .house-footer p { font-size: 8px; text-align: center; justify-content: center; flex: 0 0 73px; flex-direction: column; gap: 3px; }
+  .house-footer p svg { width: 12px; height: 12px; }
+}
